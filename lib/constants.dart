@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class Constants{
-  final primaryColor=Colors.white;
+  final primaryColor=Color(0xffff7b00);
+  final secondryColor=Color(0xffffdb2e);
+
 }
