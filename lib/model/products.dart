@@ -7,7 +7,7 @@ class Products {
   late String? description;
   late String? category;
   late String? image;
-  late List<Rating> rating;
+  late List<Rating>? rating;
   Products({
     required this.id,
     required this.title,
