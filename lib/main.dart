@@ -10,11 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
-      home: NavigationScreen()
-    );
+    return MaterialApp(home: NavigationScreen());
   }
 }
-
-
