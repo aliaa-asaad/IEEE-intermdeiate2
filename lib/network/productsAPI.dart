@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:intermediate/model/products.dart';
 
 class ProductsApi {
-  Future<Products> getData() async {
+  Future<Products> getProductData() async {
     final http.Response response =
         await http.get(Uri.parse("https://fakestoreapi.com/products"));
     if (response.statusCode <= 299 && response.statusCode >= 200) {

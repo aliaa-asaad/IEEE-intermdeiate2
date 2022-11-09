@@ -5,7 +5,7 @@ class User {
   String? username;
   String? password;
   List<Name>? name;
-  int? phone;
+  String? phone;
 
   User({
     this.address,
@@ -64,6 +64,8 @@ class Address {
 
   Address.fromMap(Map<String, dynamic> map) {
     this.city = map['city'];
+    print("--11--");
+
     this.street = map['street'];
     this.number = map['number'];
   }
