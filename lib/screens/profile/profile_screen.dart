@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intermediate/model/user.dart';
 import 'package:intermediate/network/userAPI.dart';
+import 'package:intermediate/screens/profile/shippingAddress_sceen.dart';
+
 import '../../constants.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -29,16 +31,17 @@ class ProfileScreen extends StatelessWidget {
 
               return Column(
                 children: [
-                  Container(height: 300,
-
-                    child: ListView(
-                      children:[ Container(
-                        color: Colors.white,
-                        child: Row(
+                  Container(
+                    height: 150,
+                    child: ListView(children: [
+                      Container(
+                        color: Constants.secondryColor,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
                               padding: EdgeInsets.only(
-                                  left: 5, bottom: 10, right: 5, top: 10),
+                                  left: 20, bottom: 10, right: 10, top: 10),
                               child: Text(
                                 snapShot.data!.users![0].username.toString(),
                                 style: TextStyle(
@@ -49,111 +52,122 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: EdgeInsets.only(
-                                  left: 5, bottom: 10, right: 5, top: 10),
+                                  left: 20, bottom: 10, right: 5, top: 10),
                               child: Text(
                                 snapShot.data!.users![0].email!.toString(),
                                 style: TextStyle(
-                                    color: Colors.black26,
-                                    fontSize: 15,
+                                    color: Colors.black54,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
                           ],
                         ),
-                      ),]
-                    ),
+                      ),
+                    ]),
                   ),
-                  Container(
-
-                    decoration: BoxDecoration(color: Constants.thirdColor,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10))),
-                    padding: EdgeInsets.all(15),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.only(right: 10),
-                                child: IconButton(
-                                  icon: Icon(Icons.location_on_outlined,
-                                      color: Constants.primaryColor),
-                                  onPressed: () {},
-                                )),
-                            Text(
-                              "Shipping Address",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        Divider(
-                          height: 20,
-                          thickness: 1,
-                          color: Colors.grey,
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.only(right: 10),
-                                child: Icon(
-                                  Icons.payment_sharp,
-                                  color: Constants.primaryColor,
-                                )),
-                            Text(
-                              "Payment Method",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        Divider(
-                          height: 20,
-                          thickness: 1,
-                          color: Colors.grey,
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.only(right: 10),
-                                child: Icon(
-                                  Icons.menu_sharp,
-                                  color: Constants.primaryColor,
-                                )),
-                            Text(
-                              "Order History",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        Divider(
-                          height: 30,
-                          thickness: 1,
-                          color: Colors.grey,
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.only(right: 10),
-                                child: Icon(
-                                  Icons.logout,
-                                  color: Constants.primaryColor,
-                                )),
-                            Text(
-                              "Logout",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 30),
-                            ),
-                          ],
-                        ),
-                        Divider(
-                          height: 20,
-                          thickness: 1,
-                          color: Colors.grey,
-                        )
-                      ],
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Constants.thirdColor,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(40))),
+                      padding: EdgeInsets.all(25),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                  padding: EdgeInsets.only(right: 9),
+                                  child: IconButton(
+                                    icon: Icon(Icons.location_on_outlined,
+                                        color: Constants.primaryColor),
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ShippingScreen()),
+                                      );
+                                    },
+                                  )),
+                              Text(
+                                "Shipping Address",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            height: 20,
+                            thickness: 1,
+                            color: Colors.grey,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                  padding: EdgeInsets.only(right: 20, left: 10),
+                                  child: Icon(
+                                    Icons.payment_sharp,
+                                    color: Constants.primaryColor,
+                                  )),
+                              Text(
+                                "Payment Method",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            height: 20,
+                            thickness: 1,
+                            color: Colors.grey,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                  padding: EdgeInsets.only(right: 20, left: 10),
+                                  child: Icon(
+                                    Icons.menu_sharp,
+                                    color: Constants.primaryColor,
+                                  )),
+                              Text(
+                                "Order History",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            height: 30,
+                            thickness: 1,
+                            color: Colors.grey,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                  padding: EdgeInsets.only(right: 20, left: 10),
+                                  child: Icon(
+                                    Icons.logout,
+                                    color: Constants.primaryColor,
+                                  )),
+                              Text(
+                                "Logout",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            height: 20,
+                            thickness: 1,
+                            color: Colors.grey,
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
