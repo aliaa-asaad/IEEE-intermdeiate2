@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intermediate/model/user.dart';
 import 'package:intermediate/network/userAPI.dart';
-
 import '../../constants.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -19,8 +18,8 @@ class ProfileScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: FutureBuilder<User>(
-          future: API().getData(),
+      body: FutureBuilder<Users>(
+          future: UserAPI().getData(),
           builder: (context, snapShot) {
             if (snapShot.hasError) {
               print(snapShot.error.toString());
@@ -30,38 +29,43 @@ class ProfileScreen extends StatelessWidget {
 
               return Column(
                 children: [
-                  Container(
-                    color: Constants.secondryColor,
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: 5, bottom: 10, right: 5, top: 10),
-                          child: Text(
-                            snapShot.data!.username.toString(),
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                wordSpacing: 1),
-                          ),
+                  Container(height: 300,
+
+                    child: ListView(
+                      children:[ Container(
+                        color: Colors.white,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: 5, bottom: 10, right: 5, top: 10),
+                              child: Text(
+                                snapShot.data!.users![0].username.toString(),
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    wordSpacing: 1),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: 5, bottom: 10, right: 5, top: 10),
+                              child: Text(
+                                snapShot.data!.users![0].email!.toString(),
+                                style: TextStyle(
+                                    color: Colors.black26,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: 5, bottom: 10, right: 5, top: 10),
-                          child: Text(
-                            snapShot.data!.email.toString(),
-                            style: TextStyle(
-                                color: Colors.black26,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                      ],
+                      ),]
                     ),
                   ),
                   Container(
-                    color: Constants.thirdColor,
-                    decoration: BoxDecoration(
+
+                    decoration: BoxDecoration(color: Constants.thirdColor,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10))),

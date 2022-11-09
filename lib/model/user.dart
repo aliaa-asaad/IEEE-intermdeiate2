@@ -1,10 +1,28 @@
+class Users{
+  List<User>? users;
+  Users({this.users});
+  Users.fromMap(List<dynamic> map) {
+    users = [];
+    ((map) as List<dynamic>).forEach((element) {
+      users!.add(User.fromMap(element));
+    });
+  }
+
+  Map<String, dynamic> toMap() {
+    List<Map> userList = [];
+    users!.forEach((element) => userList.add(element.toMap()));
+    Map<String, dynamic> map = {'users': userList};
+
+    return map;
+  }
+}
 class User {
-  List<Address>? address;
+  Address? address;
   int? id;
   String? email;
   String? username;
   String? password;
-  List<Name>? name;
+  Name? name;
   String? phone;
 
   User({
@@ -15,36 +33,28 @@ class User {
     this.password,
     this.name,
     this.phone,
+
   });
 
-  User.fromMap(Map<String, dynamic> map) {
-    address = [];
-    ((map['address']) as List<dynamic>).forEach((element) {
-      address!.add(Address.fromMap(element));
-    });
+  User.fromMap(Map<String,dynamic> map) {
+    this.address = Address.fromMap(map['address']);
     this.id = map['id'];
     this.email = map['email'];
     this.username = map['username'];
     this.password = map['password'];
-    name = [];
-    ((map['name']) as List<dynamic>).forEach((element) {
-      name!.add(Name.fromMap(element));
-    });
+    this.name = Name.fromMap(map['name']);
     this.phone = map['phone'];
   }
 
   Map<String, dynamic> toMap() {
-    List<Map> addressList = [];
-    address!.forEach((element) => addressList.add(element.toMap()));
-    List<Map> nameList = [];
-    name!.forEach((element) => nameList.add(element.toMap()));
+
     Map<String, dynamic> map = {
-      'address': addressList,
+      'address': this.address!.toMap(),
       'id': this.id,
       'email': this.email,
       'username': this.username,
       'password': this.password,
-      'name': nameList,
+      'name': this.name!.toMap(),
       'phone': this.phone,
     };
     return map;
