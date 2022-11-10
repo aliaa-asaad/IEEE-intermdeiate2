@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intermediate/model/user.dart';
 import 'package:intermediate/network/userAPI.dart';
-import 'package:intermediate/screens/profile/shippingAddress_screen.dart';
+import 'package:intermediate/screens/profile/shippingAddress_sceen.dart';
 
 import '../../constants.dart';
 

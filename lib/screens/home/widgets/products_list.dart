@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class ProductsList extends StatelessWidget {
-  final String? price;
+  final double? price;
   final String? name;
   final String? image;
 
@@ -28,7 +28,7 @@ class ProductsList extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,7 +40,7 @@ class ProductsList extends StatelessWidget {
                       style: TextStyle(fontSize: 15),
                     ),
                     Text(
-                      price!,
+                      '$price',
                       style: TextStyle(fontSize: 15),
                     ),
                   ],
