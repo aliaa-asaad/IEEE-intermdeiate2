@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intermediate/screens/details/details_screen.dart';
 import 'package:intermediate/screens/naviagtion/navigation_bar.dart';
 
 void main() {
@@ -10,6 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: NavigationScreen());
+    return MaterialApp(
+    routes:
+    {
+        '/':(context)=>NavigationScreen(),
+      'details':(context) =>DetailsScreen()
+    });
   }
 }

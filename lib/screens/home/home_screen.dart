@@ -1,11 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intermediate/constants.dart';
 import 'package:intermediate/model/products.dart';
+import 'package:intermediate/network/categoriesAPI.dart';
 import 'package:intermediate/network/productsAPI.dart';
 import 'package:intermediate/screens/home/widgets/categories_list.dart';
 import 'package:intermediate/screens/home/widgets/products_list.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int indexCategory = -1;
+  List indexList = [0, 1, 2, 3];
+  String category = '';
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +27,7 @@ class HomeScreen extends StatelessWidget {
       "jewelery",
       "electronics"
     ];
+
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -35,6 +48,15 @@ class HomeScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => CategoriesList(
                         text: categories[index],
+                        function: () {
+                          setState(() {
+                            indexCategory = indexList[index];
+                            category = categories[index];
+                          });
+                        },
+                        borderColor: indexCategory == indexList[index]
+                            ? Constants.primaryColor
+                            : Colors.grey.shade300,
                       ),
                   separatorBuilder: (context, index) => SizedBox(
                         width: 10,
@@ -49,18 +71,19 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 20),
             Expanded(
               child: FutureBuilder<ProductsData>(
-                  future: ProductsApi().getProductData(),
+                  future: CategoryApi().getApiData(category),
                   builder: (context, snapshot) {
                     if (snapshot.hasData)
                       return Container(
                         child: GridView.builder(
                           itemBuilder: (context, index) => ProductsList(
+                            id: snapshot.data!.products![index].id!.toInt(),
                             name: snapshot.data!.products![index].title!,
                             price: snapshot.data!.products![index].price!
-                                ,
+                                .toDouble(),
                             image: snapshot.data!.products![index].image,
                           ),
-                          itemCount: categories.length,
+                          itemCount: snapshot.data!.products!.length,
                           gridDelegate:
                               SliverGridDelegateWithMaxCrossAxisExtent(
                                   maxCrossAxisExtent: 200,
