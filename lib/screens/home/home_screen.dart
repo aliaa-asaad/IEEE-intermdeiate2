@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intermediate/model/products.dart';
 import 'package:intermediate/network/productsAPI.dart';
@@ -10,7 +9,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List categories = ["men's clothing", "women's clothing", "jewelery", "electronics"];
+    List categories = [
+      "men's clothing",
+      "women's clothing",
+      "jewelery",
+      "electronics"
+    ];
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -44,35 +48,37 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Expanded(
-              child: FutureBuilder <ProductsData>(future: ProductsApi().getProductData(),
-                builder:(context, snapshot) {
-                  if(snapshot.hasData) return Container(
-                  child: GridView.builder(
-                    itemBuilder: (context, index) => ProductsList(
-                      name: snapshot.data!.products![index].title!,
-                      price: snapshot.data!.products![index].price!,
-                      image:
-                      snapshot.data!.products![index].image,
-                    ),
-                    itemCount: categories.length,
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        crossAxisSpacing: 20,
-                        childAspectRatio: 3 / 4,
-                        mainAxisSpacing: 20),
-                  ),
-                );
-                  if (snapshot.hasError) {
-                    print(snapshot.error!);
-                    return Container(
-                      child: Text(snapshot.error!.toString()),
+              child: FutureBuilder<ProductsData>(
+                  future: ProductsApi().getProductData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData)
+                      return Container(
+                        child: GridView.builder(
+                          itemBuilder: (context, index) => ProductsList(
+                            name: snapshot.data!.products![index].title!,
+                            price: snapshot.data!.products![index].price!
+                                ,
+                            image: snapshot.data!.products![index].image,
+                          ),
+                          itemCount: categories.length,
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 200,
+                                  crossAxisSpacing: 20,
+                                  childAspectRatio: 3 / 4,
+                                  mainAxisSpacing: 20),
+                        ),
+                      );
+                    if (snapshot.hasError) {
+                      print(snapshot.error!);
+                      return Container(
+                        child: Text(snapshot.error!.toString()),
+                      );
+                    }
+                    return Center(
+                      child: CircularProgressIndicator(),
                     );
-                  }
-                  return  Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              ),
+                  }),
             ),
           ],
         ),

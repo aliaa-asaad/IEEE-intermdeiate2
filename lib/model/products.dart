@@ -23,6 +23,7 @@ class ProductsData {
     return map;
   }
 }
+
 class Products {
   late int? id;
   late String? title;
@@ -46,7 +47,7 @@ class Products {
     print('5');
     this.title = map['title'];
     print('6');
-    this.price = map['price'];
+    this.price = double.parse(map['price'].toString());
     print('7');
     this.description = map['description'];
     print('8');
@@ -54,7 +55,7 @@ class Products {
     print('9');
     this.image = map['image'];
     print('10');
-    this.rating =Rating.fromMap(map['rating']);
+    this.rating = Rating.fromMap(map['rating']);
     print('15');
   }
   Map<String, dynamic> toMap() {
