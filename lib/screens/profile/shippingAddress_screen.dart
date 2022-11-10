@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intermediate/model/user.dart';
 import 'package:intermediate/network/userAPI.dart';
+
 import '../../constants.dart';
 
 class ShippingScreen extends StatelessWidget {
@@ -25,8 +26,17 @@ class ShippingScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
-              color: Constants.thirdColor),
+              color: Constants.primaryColor),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15.0),
+            child: Icon(
+              Icons.edit,
+              color: Constants.primaryColor,
+            ),
+          ),
+        ],
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
@@ -43,6 +53,7 @@ class ShippingScreen extends StatelessWidget {
                 padding: EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -62,7 +73,6 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
                     ),
@@ -84,7 +94,6 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
                     ),
@@ -106,7 +115,6 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
                     ),
@@ -128,7 +136,6 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
                     ),
@@ -154,9 +161,25 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 60,
+                        width: 350,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Constants.primaryColor,
+                              textStyle: const TextStyle(fontSize: 25)),
+                          onPressed: () {},
+                          child: Text('Save'),
+                        ),
+                      ),
                     ),
                   ],
                 ),

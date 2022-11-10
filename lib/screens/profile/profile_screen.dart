@@ -36,33 +36,52 @@ class ProfileScreen extends StatelessWidget {
                     child: ListView(children: [
                       Container(
                         color: Constants.secondryColor,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 20, bottom: 10, right: 10, top: 10),
-                              child: Text(
-                                snapShot.data!.users![0].username.toString(),
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    wordSpacing: 1),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 20,
+                                        bottom: 10,
+                                        right: 10,
+                                        top: 10),
+                                    child: Text(
+                                      snapShot.data!.users![0].username
+                                          .toString(),
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          wordSpacing: 1),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 20,
+                                        bottom: 10,
+                                        right: 20,
+                                        top: 10),
+                                    child: Text(
+                                      snapShot.data!.users![0].email!
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 20, bottom: 10, right: 5, top: 10),
-                              child: Text(
-                                snapShot.data!.users![0].email!.toString(),
-                                style: TextStyle(
-                                    color: Colors.black54,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ],
-                        ),
+                              CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 50,
+                                backgroundImage: NetworkImage(
+                                  'https://thumbs.dreamstime.com/b/avatar-profile-icon-default-social-media-user-vector-avatar-profile-icon-default-social-media-user-vector-icon-213735007.jpg',
+                                ),
+                              )
+                            ]),
                       ),
                     ]),
                   ),
@@ -71,8 +90,8 @@ class ProfileScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Constants.thirdColor,
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(40),
-                              topRight: Radius.circular(40))),
+                              topLeft: Radius.circular(35),
+                              topRight: Radius.circular(35))),
                       padding: EdgeInsets.all(25),
                       child: Column(
                         children: [
@@ -82,7 +101,7 @@ class ProfileScreen extends StatelessWidget {
                           Row(
                             children: [
                               Padding(
-                                  padding: EdgeInsets.only(right: 9),
+                                  padding: EdgeInsets.only(right: 8),
                                   child: IconButton(
                                     icon: Icon(Icons.location_on_outlined,
                                         color: Constants.primaryColor),
@@ -142,9 +161,12 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Divider(
-                            height: 30,
+                            height: 20,
                             thickness: 1,
                             color: Colors.grey,
+                          ),
+                          SizedBox(
+                            height: 30,
                           ),
                           Row(
                             children: [
