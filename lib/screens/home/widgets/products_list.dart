@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class ProductsList extends StatelessWidget {
-  final String? price;
+  final int? id;
+  final double? price;
   final String? name;
   final String? image;
 
-  const ProductsList({this.price, this.name, this.image});
-
+  const ProductsList({this.price, this.name, this.image, this.id});
+  void selectCategory(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed('details', arguments: {'id': id});
+  }
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: ()=>selectCategory(context),
       child: Container(
         child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -28,20 +31,21 @@ class ProductsList extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
+            ),
+            Text(
+              name!,
+              style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),maxLines: 1,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   children: [
+
                     Text(
-                      name!,
-                      style: TextStyle(fontSize: 15),
-                    ),
-                    Text(
-                      price!,
-                      style: TextStyle(fontSize: 15),
+                      '\$$price',
+                      style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey),
                     ),
                   ],
                 ),
