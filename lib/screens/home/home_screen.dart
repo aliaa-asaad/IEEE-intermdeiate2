@@ -63,6 +63,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 );
                   if (snapshot.hasError) {
+                    print(snapshot.error!);
                     return Container(
                       child: Text(snapshot.error!.toString()),
                     );
