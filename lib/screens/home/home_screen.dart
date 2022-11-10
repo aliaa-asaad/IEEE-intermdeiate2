@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intermediate/model/products.dart';
+import 'package:intermediate/network/productsAPI.dart';
 import 'package:intermediate/screens/home/widgets/categories_list.dart';
 import 'package:intermediate/screens/home/widgets/products_list.dart';
 
@@ -8,7 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List te = ['men\'s clothing', 'women\'s clothing', 'asaad', 'test','men\'s clothing', 'women\'s clothing',];
+    List categories = ["men's clothing", "women's clothing", "jewelery", "electronics"];
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -28,12 +30,12 @@ class HomeScreen extends StatelessWidget {
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => CategoriesList(
-                        text: te[index],
+                        text: categories[index],
                       ),
                   separatorBuilder: (context, index) => SizedBox(
                         width: 10,
                       ),
-                  itemCount: te.length),
+                  itemCount: categories.length),
             ),
             SizedBox(height: 30),
             Text(
@@ -42,21 +44,34 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Expanded(
-              child: Container(
-                child: GridView.builder(
-                  itemBuilder: (context, index) => ProductsList(
-                    name: te[index],
-                    price: te[index],
-                    image:
-                        'https://th.bing.com/th/id/OIP.j38sGXHOPs8wDf0sGbaRGAHaED?pid=ImgDet&rs=1',
+              child: FutureBuilder <ProductsData>(future: ProductsApi().getProductData(),
+                builder:(context, snapshot) {
+                  if(snapshot.hasData) return Container(
+                  child: GridView.builder(
+                    itemBuilder: (context, index) => ProductsList(
+                      name: snapshot.data!.products![index].title!,
+                      price: snapshot.data!.products![index].price!,
+                      image:
+                      snapshot.data!.products![index].image,
+                    ),
+                    itemCount: categories.length,
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 200,
+                        crossAxisSpacing: 20,
+                        childAspectRatio: 3 / 4,
+                        mainAxisSpacing: 20),
                   ),
-                  itemCount: te.length,
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      crossAxisSpacing: 20,
-                      childAspectRatio: 3 / 4,
-                      mainAxisSpacing: 20),
-                ),
+                );
+                  if (snapshot.hasError) {
+                    print(snapshot.error!);
+                    return Container(
+                      child: Text(snapshot.error!.toString()),
+                    );
+                  }
+                  return  Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
               ),
             ),
           ],
