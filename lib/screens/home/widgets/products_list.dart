@@ -16,8 +16,8 @@ class ProductsList extends StatelessWidget {
         child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              height: 145,
-              width: 150,
+              height: MediaQuery.of(context).size.height*0.17,//145,
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
