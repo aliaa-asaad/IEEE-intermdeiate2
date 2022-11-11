@@ -198,11 +198,10 @@ class ProfileScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               color: Colors.white,
-              child: Center(
-                child: Container(
-                  child: CircularProgressIndicator(),
-                  height: 100,
-                  width: 100,
+              child: Container(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(
+                  color: Constants.secondryColor,
                 ),
               ),
             );

@@ -31,7 +31,7 @@ class ShippingScreen extends StatelessWidget {
             padding: const EdgeInsets.only(right: 15.0),
             child: Icon(
               Icons.edit,
-              color: Colors.black,
+              color: Colors.black26,
             ),
           ),
         ],
@@ -183,11 +183,10 @@ class ShippingScreen extends StatelessWidget {
                 ),
               );
             }
-            return Center(
-              child: Container(
-                child: CircularProgressIndicator(),
-                height: 100,
-                width: 100,
+            return Container(
+              alignment: Alignment.center,
+              child: CircularProgressIndicator(
+                color: Constants.secondryColor,
               ),
             );
           }),
