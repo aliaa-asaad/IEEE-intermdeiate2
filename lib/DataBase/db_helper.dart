@@ -4,8 +4,6 @@ import 'package:sqflite/sqflite.dart';
 
 const String columnId_product = 'id';
 const String columnId = 'id_table';
-//const String columnName = 'name';
-//const String columnIsChecked_fav = 'isChecked';
 const String Table = 'cart_table';
 class DbHelper {
   late Database db;
@@ -48,6 +46,10 @@ class DbHelper {
       });
       return all_cart;
     }
+
+  }
+  Future<int> UpdateProduct(Products p)async{
+    return await db.update(Table, p.toMap());
 
   }
 }

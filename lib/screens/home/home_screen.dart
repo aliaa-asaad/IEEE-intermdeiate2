@@ -1,14 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intermediate/constants.dart';
+import 'package:intermediate/model/products.dart';
+import 'package:intermediate/network/categoriesAPI.dart';
+import 'package:intermediate/network/productsAPI.dart';
 import 'package:intermediate/screens/home/widgets/categories_list.dart';
 import 'package:intermediate/screens/home/widgets/products_list.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int indexCategory = -1;
+  List indexList = [0, 1, 2, 3];
+  String category = '';
+
+  @override
   Widget build(BuildContext context) {
-    List te = ['men\'s clothing', 'women\'s clothing', 'asaad', 'test','men\'s clothing', 'women\'s clothing',];
+    List categories = [
+      "men's clothing",
+      "women's clothing",
+      "jewelery",
+      "electronics"
+    ];
+
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -28,12 +47,21 @@ class HomeScreen extends StatelessWidget {
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => CategoriesList(
-                        text: te[index],
+                        text: categories[index],
+                        function: () {
+                          setState(() {
+                            indexCategory = indexList[index];
+                            category = categories[index];
+                          });
+                        },
+                        borderColor: indexCategory == indexList[index]
+                            ? Constants.primaryColor
+                            : Colors.grey.shade300,
                       ),
                   separatorBuilder: (context, index) => SizedBox(
                         width: 10,
                       ),
-                  itemCount: te.length),
+                  itemCount: categories.length),
             ),
             SizedBox(height: 30),
             Text(
@@ -42,22 +70,38 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Expanded(
-              child: Container(
-                child: GridView.builder(
-                  itemBuilder: (context, index) => ProductsList(
-                    name: te[index],
-                    price: te[index],
-                    image:
-                        'https://th.bing.com/th/id/OIP.j38sGXHOPs8wDf0sGbaRGAHaED?pid=ImgDet&rs=1',
-                  ),
-                  itemCount: te.length,
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      crossAxisSpacing: 20,
-                      childAspectRatio: 3 / 4,
-                      mainAxisSpacing: 20),
-                ),
-              ),
+              child: FutureBuilder<ProductsData>(
+                  future: CategoryApi().getApiData(category),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData)
+                      return Container(
+                        child: GridView.builder(
+                          itemBuilder: (context, index) => ProductsList(
+                            id: snapshot.data!.products![index].id!.toInt(),
+                            name: snapshot.data!.products![index].title!,
+                            price: snapshot.data!.products![index].price!
+                                .toDouble(),
+                            image: snapshot.data!.products![index].image,
+                          ),
+                          itemCount: snapshot.data!.products!.length,
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 200,
+                                  crossAxisSpacing: 20,
+                                  childAspectRatio: 3 / 4,
+                                  mainAxisSpacing: 20),
+                        ),
+                      );
+                    if (snapshot.hasError) {
+                      print(snapshot.error!);
+                      return Container(
+                        child: Text(snapshot.error!.toString()),
+                      );
+                    }
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }),
             ),
           ],
         ),

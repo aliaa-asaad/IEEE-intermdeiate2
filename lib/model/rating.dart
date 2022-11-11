@@ -6,8 +6,8 @@ class Rating {
     required this.rate,
   });
   Rating.fromMap(Map<String, dynamic> map) {
-    this.rate = map['rate'];
-    this.count = map['count'];
+    this.rate = double.parse(map['rate'].toString());
+    this.count = int.parse(map['count'].toString());
   }
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {
