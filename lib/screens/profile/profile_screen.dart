@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intermediate/model/user.dart';
 import 'package:intermediate/network/userAPI.dart';
 import 'package:intermediate/screens/profile/shippingAddress_screen.dart';
+
 import '../../constants.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -14,7 +15,8 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "Profile",
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -36,8 +38,15 @@ class ProfileScreen extends StatelessWidget {
                       Container(
                         color: Constants.secondryColor,
                         child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 50,
+                                backgroundImage: NetworkImage(
+                                  'https://thumbs.dreamstime.com/b/avatar-profile-icon-default-social-media-user-vector-avatar-profile-icon-default-social-media-user-vector-icon-213735007.jpg',
+                                ),
+                              ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -73,13 +82,6 @@ class ProfileScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 50,
-                                backgroundImage: NetworkImage(
-                                  'https://thumbs.dreamstime.com/b/avatar-profile-icon-default-social-media-user-vector-avatar-profile-icon-default-social-media-user-vector-icon-213735007.jpg',
-                                ),
-                              )
                             ]),
                       ),
                     ]),
@@ -87,12 +89,13 @@ class ProfileScreen extends StatelessWidget {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Constants.thirdColor,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(35),
                               topRight: Radius.circular(35))),
                       padding: EdgeInsets.all(25),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
                             height: 50,
@@ -164,9 +167,6 @@ class ProfileScreen extends StatelessWidget {
                             thickness: 1,
                             color: Colors.grey,
                           ),
-                          SizedBox(
-                            height: 30,
-                          ),
                           Row(
                             children: [
                               Padding(
@@ -194,11 +194,16 @@ class ProfileScreen extends StatelessWidget {
                 ],
               );
             }
-            return Center(
-              child: Container(
-                child: CircularProgressIndicator(),
-                height: 100,
-                width: 100,
+            return Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.white,
+              child: Center(
+                child: Container(
+                  child: CircularProgressIndicator(),
+                  height: 100,
+                  width: 100,
+                ),
               ),
             );
           }),
