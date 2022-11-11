@@ -1,3 +1,4 @@
+import 'package:intermediate/DataBase/db_helper.dart';
 import 'package:intermediate/model/rating.dart';
 
 class ProductsData {
@@ -19,6 +20,7 @@ class ProductsData {
   }
 }
 class Products {
+  //int? idtable;
    int? id;
    String? title;
    double? price;
@@ -27,6 +29,7 @@ class Products {
    String? image;
    Rating? rating;
   Products({
+   // this.idtable,
     this.id,
     this.title,
     this.price,
@@ -36,6 +39,7 @@ class Products {
     this.rating,
   });
   Products.fromMap(Map<String, dynamic> map) {
+    //this.idtable=map[columnId];
     this.id = int.parse(map['id'].toString());
     this.title = map['title'];
     this.price = double.parse(map['price'].toString());
