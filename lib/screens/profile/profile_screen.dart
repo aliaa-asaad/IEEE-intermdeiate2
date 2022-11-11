@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intermediate/model/user.dart';
 import 'package:intermediate/network/userAPI.dart';
 import 'package:intermediate/screens/profile/shippingAddress_screen.dart';
+
 import '../../constants.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -88,12 +89,13 @@ class ProfileScreen extends StatelessWidget {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Constants.thirdColor,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(35),
                               topRight: Radius.circular(35))),
                       padding: EdgeInsets.all(25),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
                             height: 50,
@@ -197,9 +199,12 @@ class ProfileScreen extends StatelessWidget {
             }
             return Center(
               child: Container(
-                child: CircularProgressIndicator(),
-                height: 100,
-                width: 100,
+                color: Colors.white,
+                child: Container(
+                  child: CircularProgressIndicator(),
+                ),
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
               ),
             );
           }),
