@@ -1,7 +1,8 @@
 import 'package:intermediate/model/rating.dart';
-
+import '../DataBase/db_helper.dart';
 class Products {
-  late int? id;
+  int? id;
+  late int? id_product;
   late String? title;
   late double? price;
   late String? description;
@@ -9,7 +10,8 @@ class Products {
   late String? image;
   late List<Rating>? rating;
   Products({
-    required this.id,
+    this.id,
+    required this.id_product,
     required this.title,
     required this.price,
     required this.description,
@@ -18,7 +20,10 @@ class Products {
     required this.rating,
   });
   Products.fromMap(Map<String, dynamic> map) {
-    this.id = map['id'];
+    if (map[columnId] != null) {   //ده بتاع الجدول بتاع الداتا بيز مش ال id بتاع البرودكت
+      this.id = map[columnId];
+    }
+    this.id_product = map['id'];
     this.title = map['title'];
     this.price = map['price'];
     this.description = map['description'];
@@ -34,8 +39,10 @@ class Products {
     this.rating!.forEach((element) {
       ratingList.add(element.toMap());
     });
+
     Map<String, dynamic> map = {
-      "id": this.id,
+      columnId : this.id,
+      "id": this.id_product,
       "title": this.title,
       "price": this.price,
       "description": this.description,
