@@ -14,22 +14,33 @@ class DbHelper {
   factory DbHelper() {
     return instance;
   }
+
   DbHelper._internal();
 
   Future opendatabase() async {
     var databasesPath = await getDatabasesPath();
     String path = await join(databasesPath, 'db_ecommerce');
-    db = await openDatabase(path, version: 1,
-        onCreate: (Database db, int v) async {
-          db.execute(
-              'create table $Table($columnId integer primary key autoincrement,$column_Id_Product integer not null)');
-        });
+    db = await openDatabase(
+      path,
+      version: 1,
+      onCreate: (Database db, int v) async {
+        db.execute('''create table $Table(
+          $columnId integer primary key autoincrement,
+          $column_Id_Product integer not null,
+          $columnTitle text not null,
+          $columnImage text not null,
+          $columnPrice real not null,
+          $columnRate real not null)''');
+      },
+    );
   }
 
-   Future<Helper_Product_Details> add_info(Helper_Product_Details product) async {
-    await db.insert(Table,product.toMap());
+  Future<Helper_Product_Details> add_info(
+      Helper_Product_Details product) async {
+    await db.insert(Table, product.toMap());
     return product;
   }
+
   Future<int> removeproduct(int id) async {
     return await db.delete(
       Table,
@@ -37,7 +48,8 @@ class DbHelper {
       whereArgs: [id],
     );
   }
-  Future<List<Helper_Product_Details>> allproducts()async{
+
+  Future<List<Helper_Product_Details>> allproducts() async {
     List<Map<String, dynamic>> cart_asmaps = await db.query(Table);
     if (cart_asmaps.length == 0)
       return [];
@@ -48,10 +60,9 @@ class DbHelper {
       });
       return all_cart;
     }
-
   }
-  Future<int> UpdateProduct(Helper_Product_Details p)async{
-    return await db.update(Table, p.toMap());
 
+  Future<int> UpdateProduct(Helper_Product_Details p) async {
+    return await db.update(Table, p.toMap());
   }
 }
