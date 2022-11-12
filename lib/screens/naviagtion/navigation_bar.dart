@@ -29,7 +29,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
     return Scaffold(
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
-        elevation: 150,
         selectedFontSize: 12,
         unselectedFontSize: 12,
         backgroundColor: Colors.white,

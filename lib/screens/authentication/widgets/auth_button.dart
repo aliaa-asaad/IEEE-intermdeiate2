@@ -14,7 +14,7 @@ class AuthButton extends StatelessWidget {
               backgroundColor:
                   MaterialStateProperty.all(Constants.primaryColor)),
           onPressed: () {
-            Navigator.of(context).pushNamed('home');
+            Navigator.of(context).pushNamed('navigation');
           },
           child: Text(
             'Continue',

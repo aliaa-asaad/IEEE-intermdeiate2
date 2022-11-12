@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.fromLTRB(20,20,20,0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemCount: snapshot.data!.products!.length,
                           gridDelegate:
                               SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 200,
+                                  maxCrossAxisExtent: 300,
                                   crossAxisSpacing: 20,
                                   childAspectRatio: 3 / 4,
                                   mainAxisSpacing: 20),
