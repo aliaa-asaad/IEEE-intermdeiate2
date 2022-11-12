@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:Thermo_App/constants.dart';
 import 'package:Thermo_App/model/products.dart';
 import 'package:Thermo_App/network/categoriesAPI.dart';
-import 'package:Thermo_App/network/productsAPI.dart';
 import 'package:Thermo_App/screens/home/widgets/categories_list.dart';
 import 'package:Thermo_App/screens/home/widgets/products_list.dart';
 
