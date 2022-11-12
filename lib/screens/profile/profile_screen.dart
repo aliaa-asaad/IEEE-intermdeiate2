@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intermediate/model/user.dart';
 import 'package:intermediate/network/userAPI.dart';
+import 'package:intermediate/screens/profile/payment_screen.dart';
 import 'package:intermediate/screens/profile/shippingAddress_screen.dart';
 
 import '../../constants.dart';
@@ -131,9 +132,16 @@ class ProfileScreen extends StatelessWidget {
                             children: [
                               Padding(
                                   padding: EdgeInsets.only(right: 20, left: 10),
-                                  child: Icon(
-                                    Icons.payment_sharp,
-                                    color: Constants.primaryColor,
+                                  child: IconButton(
+                                    icon: Icon(Icons.payment_sharp,
+                                        color: Constants.primaryColor),
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                PaymentScreen()),
+                                      );
+                                    },
                                   )),
                               Text(
                                 "Payment Method",
