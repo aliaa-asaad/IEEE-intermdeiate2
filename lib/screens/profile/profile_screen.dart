@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:Thermo_App/model/user.dart';
-import 'package:Thermo_App/network/userAPI.dart';
-import 'package:Thermo_App/screens/profile/shippingAddress_screen.dart';
-
+import '/../model/user.dart';
+import '/../network/userAPI.dart';
+import 'shippingAddress_screen.dart';
+import 'payment_screen.dart';
 import '../../constants.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -15,7 +15,8 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "Profile",
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -36,45 +37,65 @@ class ProfileScreen extends StatelessWidget {
                     child: ListView(children: [
                       Container(
                         color: Constants.secondryColor,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 20, bottom: 10, right: 10, top: 10),
-                              child: Text(
-                                snapShot.data!.users![0].username.toString(),
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    wordSpacing: 1),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 50,
+                                backgroundImage: NetworkImage(
+                                  'https://thumbs.dreamstime.com/b/avatar-profile-icon-default-social-media-user-vector-avatar-profile-icon-default-social-media-user-vector-icon-213735007.jpg',
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 20, bottom: 10, right: 5, top: 10),
-                              child: Text(
-                                snapShot.data!.users![0].email!.toString(),
-                                style: TextStyle(
-                                    color: Colors.black54,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 20,
+                                        bottom: 10,
+                                        right: 10,
+                                        top: 10),
+                                    child: Text(
+                                      snapShot.data!.users![0].username
+                                          .toString(),
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          wordSpacing: 1),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 20,
+                                        bottom: 10,
+                                        right: 20,
+                                        top: 10),
+                                    child: Text(
+                                      snapShot.data!.users![0].email!
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
+                            ]),
                       ),
                     ]),
                   ),
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Constants.thirdColor,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(40),
-                              topRight: Radius.circular(40))),
+                              topLeft: Radius.circular(35),
+                              topRight: Radius.circular(35))),
                       padding: EdgeInsets.all(25),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
                             height: 50,
@@ -82,7 +103,7 @@ class ProfileScreen extends StatelessWidget {
                           Row(
                             children: [
                               Padding(
-                                  padding: EdgeInsets.only(right: 9),
+                                  padding: EdgeInsets.only(right: 8),
                                   child: IconButton(
                                     icon: Icon(Icons.location_on_outlined,
                                         color: Constants.primaryColor),
@@ -110,9 +131,16 @@ class ProfileScreen extends StatelessWidget {
                             children: [
                               Padding(
                                   padding: EdgeInsets.only(right: 20, left: 10),
-                                  child: Icon(
-                                    Icons.payment_sharp,
-                                    color: Constants.primaryColor,
+                                  child: IconButton(
+                                    icon: Icon(Icons.payment_sharp,
+                                        color: Constants.primaryColor),
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                PaymentScreen()),
+                                      );
+                                    },
                                   )),
                               Text(
                                 "Payment Method",
@@ -142,7 +170,7 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Divider(
-                            height: 30,
+                            height: 20,
                             thickness: 1,
                             color: Colors.grey,
                           ),
@@ -173,11 +201,15 @@ class ProfileScreen extends StatelessWidget {
                 ],
               );
             }
-            return Center(
+            return Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.white,
               child: Container(
-                child: CircularProgressIndicator(),
-                height: 100,
-                width: 100,
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(
+                  color: Constants.secondryColor,
+                ),
               ),
             );
           }),

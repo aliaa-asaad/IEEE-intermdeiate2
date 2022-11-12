@@ -1,7 +1,6 @@
-import 'package:Thermo_App/screens/authentication/sign_in.dart';
+import '/../screens/authentication/sign_in.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:Thermo_App/screens/naviagtion/navigation_bar.dart';
 import '../../constants.dart';
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);

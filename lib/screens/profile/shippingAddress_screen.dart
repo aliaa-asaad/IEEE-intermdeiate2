@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:Thermo_App/model/user.dart';
-import 'package:Thermo_App/network/userAPI.dart';
+import '/../model/user.dart';
+import '/../network/userAPI.dart';
 import '../../constants.dart';
 
 class ShippingScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class ShippingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Constants.thirdColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -23,10 +23,17 @@ class ShippingScreen extends StatelessWidget {
         title: Text(
           "Shipping Address",
           style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Constants.thirdColor),
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15.0),
+            child: Icon(
+              Icons.edit,
+              color: Colors.black26,
+            ),
+          ),
+        ],
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
@@ -43,6 +50,7 @@ class ShippingScreen extends StatelessWidget {
                 padding: EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -62,7 +70,6 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
                     ),
@@ -84,7 +91,6 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
                     ),
@@ -106,7 +112,6 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
                     ),
@@ -128,7 +133,6 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
                     ),
@@ -154,19 +158,34 @@ class ShippingScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Divider(
-                      height: 10,
                       thickness: 1,
                       color: Constants.secondryColor,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 60,
+                        width: 350,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Constants.primaryColor,
+                              textStyle: const TextStyle(fontSize: 25)),
+                          onPressed: () {},
+                          child: Text('Save'),
+                        ),
+                      ),
                     ),
                   ],
                 ),
               );
             }
-            return Center(
-              child: Container(
-                child: CircularProgressIndicator(),
-                height: 100,
-                width: 100,
+            return Container(
+              alignment: Alignment.center,
+              child: CircularProgressIndicator(
+                color: Constants.secondryColor,
               ),
             );
           }),

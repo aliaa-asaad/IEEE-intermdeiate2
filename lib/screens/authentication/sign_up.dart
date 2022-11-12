@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'sign_in.dart';
 import 'widgets/auth_button.dart';
 import 'widgets/auth_text_field.dart';

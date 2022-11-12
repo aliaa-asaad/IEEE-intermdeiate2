@@ -1,5 +1,5 @@
-import 'package:Thermo_App/model/rating.dart';
-
+import '/../model/rating.dart';
+import '/../DataBase/db_helper.dart';
 class ProductsData {
   List<Products>? products;
   ProductsData({this.products});
@@ -19,6 +19,7 @@ class ProductsData {
   }
 }
 class Products {
+  //int? idtable;
    int? id;
    String? title;
    double? price;
@@ -27,6 +28,7 @@ class Products {
    String? image;
    Rating? rating;
   Products({
+   // this.idtable,
     this.id,
     this.title,
     this.price,
@@ -36,6 +38,7 @@ class Products {
     this.rating,
   });
   Products.fromMap(Map<String, dynamic> map) {
+    //this.idtable=map[columnId];
     this.id = int.parse(map['id'].toString());
     this.title = map['title'];
     this.price = double.parse(map['price'].toString());
