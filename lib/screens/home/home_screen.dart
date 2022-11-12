@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Thermo_App/constants.dart';
-import 'package:Thermo_App/model/products.dart';
-import 'package:Thermo_App/network/categoriesAPI.dart';
-import 'package:Thermo_App/screens/home/widgets/categories_list.dart';
-import 'package:Thermo_App/screens/home/widgets/products_list.dart';
+import '/../constants.dart';
+import '/model/products.dart';
+import '/network/categoriesAPI.dart';
+import '/screens/home/widgets/categories_list.dart';
+import '/screens/home/widgets/products_list.dart';
 
 
 class HomeScreen extends StatefulWidget {
