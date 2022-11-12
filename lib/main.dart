@@ -1,3 +1,5 @@
+import 'package:Thermo_App/screens/naviagtion/navigation_bar.dart';
+
 import '/../screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import '/../screens/details/details_screen.dart';
@@ -15,10 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
     routes:
     {
         '/':(context)=>SplashScreen(),
-      'home':(context)=>HomeScreen(),
+      'navigation':(context)=>NavigationScreen(),
       'details':(context) =>DetailsScreen()
     });
   }
