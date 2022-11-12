@@ -1,4 +1,4 @@
-import 'package:intermediate/model/rating.dart';
+import 'package:Thermo_App/model/rating.dart';
 
 class ProductsData {
   List<Products>? products;

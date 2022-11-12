@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intermediate/model/user.dart';
-import 'package:intermediate/network/userAPI.dart';
-import 'package:intermediate/screens/profile/shippingAddress_screen.dart';
+import 'package:Thermo_App/model/user.dart';
+import 'package:Thermo_App/network/userAPI.dart';
+import 'package:Thermo_App/screens/profile/shippingAddress_screen.dart';
 
 import '../../constants.dart';
 

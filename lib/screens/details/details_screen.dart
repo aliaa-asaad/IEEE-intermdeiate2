@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intermediate/model/products.dart';
-import 'package:intermediate/network/productsAPI.dart';
+import 'package:Thermo_App/model/products.dart';
+import 'package:Thermo_App/network/productsAPI.dart';
 
 class DetailsScreen extends StatefulWidget {
   DetailsScreen({Key? key}) : super(key: key);

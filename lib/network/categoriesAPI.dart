@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:intermediate/model/products.dart';
+import 'package:Thermo_App/model/products.dart';
 
 class CategoryApi {
   Future<ProductsData> getApiData(String? list) async {
