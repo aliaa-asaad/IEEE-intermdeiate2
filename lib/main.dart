@@ -1,7 +1,8 @@
+import '/../screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:intermediate/DataBase/db_helper.dart';
-import 'package:intermediate/screens/details/details_screen.dart';
-import 'package:intermediate/screens/naviagtion/navigation_bar.dart';
+import '/../screens/details/details_screen.dart';
+import '/../screens/splash/splash_screen.dart';
+import '/../DataBase/db_helper.dart';
 
 void main() {
   DbHelper.instance.opendatabase();
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
     routes:
     {
-        '/':(context)=>NavigationScreen(),
-      'details':(context) =>DetailsScreen(),
+        '/':(context)=>SplashScreen(),
+      'home':(context)=>HomeScreen(),
+      'details':(context) =>DetailsScreen()
     });
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intermediate/constants.dart';
-import 'package:intermediate/model/products.dart';
-import 'package:intermediate/network/categoriesAPI.dart';
-import 'package:intermediate/network/productsAPI.dart';
-import 'package:intermediate/screens/home/widgets/categories_list.dart';
-import 'package:intermediate/screens/home/widgets/products_list.dart';
+import 'package:Thermo_App/constants.dart';
+import 'package:Thermo_App/model/products.dart';
+import 'package:Thermo_App/network/categoriesAPI.dart';
+import 'package:Thermo_App/network/productsAPI.dart';
+import 'package:Thermo_App/screens/home/widgets/categories_list.dart';
+import 'package:Thermo_App/screens/home/widgets/products_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

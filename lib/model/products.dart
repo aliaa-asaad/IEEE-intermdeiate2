@@ -1,6 +1,5 @@
-import 'package:intermediate/DataBase/db_helper.dart';
-import 'package:intermediate/model/rating.dart';
-
+import '/../model/rating.dart';
+import '/../DataBase/db_helper.dart';
 class ProductsData {
   List<Products>? products;
   ProductsData({this.products});

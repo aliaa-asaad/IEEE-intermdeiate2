@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intermediate/model/user.dart';
-import 'package:intermediate/network/userAPI.dart';
-
+import '/../model/user.dart';
+import '/../network/userAPI.dart';
 import '../../constants.dart';
 
 class ShippingScreen extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intermediate/constants.dart';
+import 'package:Thermo_App/constants.dart';
 
 class CategoriesList extends StatelessWidget {
   final String? text;

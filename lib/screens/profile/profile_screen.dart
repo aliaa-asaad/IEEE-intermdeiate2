@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intermediate/model/user.dart';
-import 'package:intermediate/network/userAPI.dart';
-import 'package:intermediate/screens/profile/payment_screen.dart';
-import 'package:intermediate/screens/profile/shippingAddress_screen.dart';
-
+import '/../model/user.dart';
+import '/../network/userAPI.dart';
+import 'shippingAddress_screen.dart';
+import 'payment_screen.dart';
 import '../../constants.dart';
 
 class ProfileScreen extends StatelessWidget {

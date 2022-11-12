@@ -1,8 +1,6 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:intermediate/DataBase/db_helper.dart';
-import 'package:intermediate/network/productsAPI.dart';
-
+import '/../network/productsAPI.dart';
+import '/../DataBase/db_helper.dart';
 import '../../model/products.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -131,7 +129,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                       children: [
                                         GestureDetector(
                                           child: Icon(
-                                            EvaIcons.minus,
+                                            Icons.remove,
                                             color: Color(0xffff7b00),
                                           ),
                                           onTap: () {

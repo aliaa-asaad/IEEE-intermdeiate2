@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intermediate/constants.dart';
-import 'package:intermediate/screens/cart/cart_screen.dart';
-import 'package:intermediate/screens/home/home_screen.dart';
-import 'package:intermediate/screens/profile/profile_screen.dart';
+import '../../constants.dart';
+import '/../screens/cart/cart_screen.dart';
+import '/../screens/home/home_screen.dart';
+import '/../screens/profile/profile_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({Key? key}) : super(key: key);
