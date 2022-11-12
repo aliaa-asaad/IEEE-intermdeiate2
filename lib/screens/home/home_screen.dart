@@ -6,6 +6,7 @@ import 'package:Thermo_App/network/categoriesAPI.dart';
 import 'package:Thermo_App/screens/home/widgets/categories_list.dart';
 import 'package:Thermo_App/screens/home/widgets/products_list.dart';
 
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
