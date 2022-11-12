@@ -7,6 +7,7 @@ import '/../screens/splash/splash_screen.dart';
 import '/../DataBase/db_helper.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   DbHelper.instance.opendatabase();
   runApp(const MyApp());
 }

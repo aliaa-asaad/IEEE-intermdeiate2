@@ -1,3 +1,6 @@
+import 'package:Thermo_App/DataBase/database_modal.dart';
+import 'package:Thermo_App/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '/../network/productsAPI.dart';
 import '/../DataBase/db_helper.dart';
@@ -32,6 +35,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     widget.id = ModalRoute.of(context)!.settings.arguments as Map<String, int?>;
+    Helper_Product_Details p=Helper_Product_Details(product_id: widget.id['id']);
     return SafeArea(
       child: Scaffold(
         body: FutureBuilder<Products>(
@@ -42,25 +46,30 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
-                      child: Container(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(snapshot.data!.image!),
-                                fit: BoxFit.scaleDown,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: NetworkImage(snapshot.data!.image!),
+                                  fit: BoxFit.scaleDown,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        height: 350,
-                        width: 380,
-                        decoration: BoxDecoration(
-                          color: Color(0xffffdb2e),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30),
+                          height: 350,
+                          width: 380,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 6,
+                              color: Constants.primaryColor,
+                            ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(30)
+                            ),
                           ),
                         ),
                       ),
@@ -82,7 +91,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               width: 100,
                               height: 40,
                               decoration: BoxDecoration(
-                                color: Colors.transparent,
+                                color: Constants.thirdColor,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Row(
@@ -94,13 +103,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                       width: 25,
                                       height: 25,
                                       decoration: BoxDecoration(
-                                        color: Colors.transparent,
+                                        color: Constants.primaryColor,
                                         borderRadius: BorderRadius.circular(3),
                                       ),
                                       child: Center(
                                           child: Icon(
                                         Icons.add,
-                                        color: Color(0xffff7b00),
+                                        color: Colors.white,
                                       )),
                                     ),
                                     onTap: () {
@@ -120,7 +129,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     width: 25,
                                     height: 25,
                                     decoration: BoxDecoration(
-                                      color: Colors.transparent,
+                                      color: Constants.primaryColor,
                                       borderRadius: BorderRadius.circular(3),
                                     ),
                                     child: Column(
@@ -130,7 +139,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         GestureDetector(
                                           child: Icon(
                                             Icons.remove,
-                                            color: Color(0xffff7b00),
+                                            color: Colors.white,
                                           ),
                                           onTap: () {
                                             setState(() {
@@ -145,7 +154,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               ),
                             ),
                             Text(
-                              '${counter * snapshot.data!.price!} \$',
+                              '${counter * snapshot.data!.price!.round()} \$',
                               style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
@@ -181,8 +190,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 60),
                       child: GestureDetector(
-                        onTap: () {
-                          helper!.add_info(Products(id: widget.id));
+                        onTap: ()async {
+                         await helper!.add_info(p);
+                         Navigator.pushReplacementNamed(context,'navigation');
+                         print(await helper!.allproducts());
                         },
                         child: Container(
                           child: Center(
