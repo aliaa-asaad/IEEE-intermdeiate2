@@ -4,6 +4,7 @@ import 'package:intermediate/screens/details/details_screen.dart';
 import 'package:intermediate/screens/naviagtion/navigation_bar.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   DbHelper.instance.opendatabase();
   runApp(const MyApp());
 }
