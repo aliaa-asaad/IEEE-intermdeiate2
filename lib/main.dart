@@ -1,7 +1,10 @@
+import 'package:Thermo_App/screens/naviagtion/navigation_bar.dart';
+
+import '/../screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:intermediate/DataBase/db_helper.dart';
-import 'package:intermediate/screens/details/details_screen.dart';
-import 'package:intermediate/screens/naviagtion/navigation_bar.dart';
+import '/../screens/details/details_screen.dart';
+import '/../screens/splash/splash_screen.dart';
+import '/../DataBase/db_helper.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,10 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
     routes:
     {
-        '/':(context)=>NavigationScreen(),
-      'details':(context) =>DetailsScreen(),
+        '/':(context)=>SplashScreen(),
+      'navigation':(context)=>NavigationScreen(),
+      'details':(context) =>DetailsScreen()
     });
   }
 }

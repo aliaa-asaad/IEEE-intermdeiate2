@@ -1,4 +1,4 @@
-name: intermediate
+name: Thermo_App
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -40,6 +40,7 @@ dependencies:
   http:
   path:
   sqflite:
+  easy_splash_screen:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,9 +64,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+
   assets:
-    - lib/assets/images/
-  #   - images/a_dot_ham.jpeg
+      - assets/images/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

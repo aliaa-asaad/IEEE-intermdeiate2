@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intermediate/model/user.dart';
-import 'package:intermediate/network/userAPI.dart';
-
+import '/../model/user.dart';
+import '/../network/userAPI.dart';
 import '../../constants.dart';
 
 class ShippingScreen extends StatelessWidget {
@@ -10,7 +9,7 @@ class ShippingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Constants.thirdColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -24,16 +23,14 @@ class ShippingScreen extends StatelessWidget {
         title: Text(
           "Shipping Address",
           style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Constants.primaryColor),
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15.0),
             child: Icon(
               Icons.edit,
-              color: Constants.primaryColor,
+              color: Colors.black26,
             ),
           ),
         ],
@@ -185,11 +182,10 @@ class ShippingScreen extends StatelessWidget {
                 ),
               );
             }
-            return Center(
-              child: Container(
-                child: CircularProgressIndicator(),
-                height: 100,
-                width: 100,
+            return Container(
+              alignment: Alignment.center,
+              child: CircularProgressIndicator(
+                color: Constants.secondryColor,
               ),
             );
           }),

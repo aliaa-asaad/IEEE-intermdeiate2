@@ -22,12 +22,13 @@ class ProductsList extends StatelessWidget {
               height: MediaQuery.of(context).size.height*0.17,//145,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
                     image: NetworkImage(
                       image!,
                     ),
-                    fit: BoxFit.fill),
+                    fit: BoxFit.contain),
               ),
             ),
             SizedBox(

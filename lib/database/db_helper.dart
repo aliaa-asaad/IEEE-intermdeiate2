@@ -1,4 +1,4 @@
-import 'package:intermediate/model/products.dart';
+import '/../model/products.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 

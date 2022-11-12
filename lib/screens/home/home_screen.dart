@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intermediate/constants.dart';
-import 'package:intermediate/model/products.dart';
-import 'package:intermediate/network/categoriesAPI.dart';
-import 'package:intermediate/network/productsAPI.dart';
-import 'package:intermediate/screens/home/widgets/categories_list.dart';
-import 'package:intermediate/screens/home/widgets/products_list.dart';
+import '/../constants.dart';
+import '/model/products.dart';
+import '/network/categoriesAPI.dart';
+import '/screens/home/widgets/categories_list.dart';
+import '/screens/home/widgets/products_list.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.fromLTRB(20,20,20,0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemCount: snapshot.data!.products!.length,
                           gridDelegate:
                               SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 200,
+                                  maxCrossAxisExtent: 300,
                                   crossAxisSpacing: 20,
                                   childAspectRatio: 3 / 4,
                                   mainAxisSpacing: 20),
