@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../authentication/sign_up.dart';
 import 'widgets/auth_button.dart';
 import 'widgets/auth_text_field.dart';
@@ -8,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'widgets/title_text.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({Key? key}) : super(key: key);
-
+TextEditingController emailController = TextEditingController();
+TextEditingController passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +25,7 @@ class SignInScreen extends StatelessWidget {
               children: [
                 TitleText(
                   text: 'Sign In',
+
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -37,6 +40,7 @@ class SignInScreen extends StatelessWidget {
                   icon: Icons.person,
                   text: 'User Name',
                   input: TextInputType.name,
+                  controller: emailController,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
@@ -45,6 +49,7 @@ class SignInScreen extends StatelessWidget {
                   icon: Icons.lock_outline,
                   text: 'Password',
                   input: TextInputType.visiblePassword,
+                  controller: passController,
                   passBool: true,
                 ),
                 SizedBox(
@@ -60,7 +65,10 @@ class SignInScreen extends StatelessWidget {
                     Text('You are new here? '),
                     RouteText(
                         text: 'Sign Up',
-                        funtion: () {
+                        funtion: () async{
+                          SharedPreferences _prefs=await SharedPreferences.getInstance();
+                          _prefs.setString('email',emailController.text);
+                          _prefs.setString('pass',passController.text);
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => SignUpScreen()));
                         })

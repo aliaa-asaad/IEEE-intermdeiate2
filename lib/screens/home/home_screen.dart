@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '/../constants.dart';
+import '../../constants.dart';
 import '/model/products.dart';
 import '/network/categoriesAPI.dart';
 import '/screens/home/widgets/categories_list.dart';
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemCount: snapshot.data!.products!.length,
                           gridDelegate:
                               SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 300,
+                                  maxCrossAxisExtent: 200,
                                   crossAxisSpacing: 20,
                                   childAspectRatio: 3 / 4,
                                   mainAxisSpacing: 20),
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     }
                     return Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(color: Constants.primaryColor,),
                     );
                   }),
             ),

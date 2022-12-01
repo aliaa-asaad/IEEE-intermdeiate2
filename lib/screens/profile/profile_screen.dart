@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../authentication/sign_in.dart';
 import '/../model/user.dart';
 import '/../network/userAPI.dart';
 import 'shippingAddress_screen.dart';
@@ -11,8 +12,8 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Constants.secondryColor,
-      appBar: AppBar(
+      backgroundColor: Constants.thirdColor,
+      appBar: AppBar(iconTheme: IconThemeData(color: Constants.primaryColor),
         title: Text(
           "Profile",
           style: TextStyle(
@@ -36,15 +37,15 @@ class ProfileScreen extends StatelessWidget {
                     height: 150,
                     child: ListView(children: [
                       Container(
-                        color: Constants.secondryColor,
+                        color: Constants.thirdColor,
+                        margin: EdgeInsets.only(left: 30),
                         child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               CircleAvatar(
                                 backgroundColor: Colors.white,
                                 radius: 50,
                                 backgroundImage: NetworkImage(
-                                  'https://thumbs.dreamstime.com/b/avatar-profile-icon-default-social-media-user-vector-avatar-profile-icon-default-social-media-user-vector-icon-213735007.jpg',
+                                  'https://th.bing.com/th/id/R.9f50b5a313af60b2f20c86afac116835?rik=KsRoR%2ffXJ%2brZWA&riu=http%3a%2f%2ficon-library.com%2fimages%2fno-profile-picture-icon%2fno-profile-picture-icon-15.jpg&ehk=pPbvrx2x8%2bTYo5rW3%2bixebN91Ui8y3%2fdyVIA8kIBueU%3d&risl=&pid=ImgRaw&r=0',
                                 ),
                               ),
                               Column(
@@ -98,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
-                            height: 50,
+                            height: 10,
                           ),
                           Row(
                             children: [
@@ -123,34 +124,32 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Divider(
-                            height: 20,
                             thickness: 1,
                             color: Colors.grey,
                           ),
-                          Row(
-                            children: [
-                              Padding(
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => PaymentScreen()),
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                Padding(
                                   padding: EdgeInsets.only(right: 20, left: 10),
-                                  child: IconButton(
-                                    icon: Icon(Icons.payment_sharp,
-                                        color: Constants.primaryColor),
-                                    onPressed: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                PaymentScreen()),
-                                      );
-                                    },
-                                  )),
-                              Text(
-                                "Payment Method",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 20),
-                              ),
-                            ],
+                                  child: Icon(Icons.payment_sharp,
+                                      color: Constants.primaryColor),
+                                ),
+                                Text(
+                                  "Payment Method",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 20),
+                                ),
+                              ],
+                            ),
                           ),
                           Divider(
-                            height: 20,
                             thickness: 1,
                             color: Colors.grey,
                           ),
@@ -170,9 +169,12 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Divider(
-                            height: 20,
+
                             thickness: 1,
                             color: Colors.grey,
+                          ),
+                          SizedBox(
+                            height: 40,
                           ),
                           Row(
                             children: [
@@ -182,18 +184,26 @@ class ProfileScreen extends StatelessWidget {
                                     Icons.logout,
                                     color: Constants.primaryColor,
                                   )),
-                              Text(
-                                "Logout",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 20),
+                              InkWell(onTap: (){Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => SignInScreen()),
+                              );},
+                                child: Text(
+                                  "Logout",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 20),
+                                ),
                               ),
                             ],
                           ),
-                          Divider(
+                          /*  Divider(
                             height: 20,
                             thickness: 1,
                             color: Colors.grey,
-                          )
+                          ),*/
+                          SizedBox(
+                            height: 40,
+                          ),
                         ],
                       ),
                     ),
@@ -208,7 +218,7 @@ class ProfileScreen extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 child: CircularProgressIndicator(
-                  color: Constants.secondryColor,
+                  color: Constants.primaryColor,
                 ),
               ),
             );
