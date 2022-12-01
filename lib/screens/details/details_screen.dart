@@ -1,5 +1,8 @@
+import 'package:Thermo_App/DataBase/database_modal.dart';
 import 'package:Thermo_App/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../naviagtion/navigation_bar.dart';
 import '/../network/productsAPI.dart';
 import '/../DataBase/db_helper.dart';
 import '../../model/products.dart';
@@ -34,52 +37,62 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    widget.id = ModalRoute
-        .of(context)!
-        .settings
-        .arguments as Map<String, int?>;
+    widget.id = ModalRoute.of(context)!.settings.arguments as Map<String, int?>;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(backgroundColor: Colors.white,elevation: 0,
-            leading: IconButton(icon: Icon(Icons.arrow_back,color: Constants.primaryColor,), onPressed:()
-            {Navigator.of(context).pushNamed('navigation');}),),
-      body: FutureBuilder<Products>(
-        future: ProductsApi().getSingleProduct(widget.id['id'].toString()),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SingleChildScrollView(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => NavigationScreen()));
+            },
+            icon: Icon(Icons.arrow_back_ios_new,color: Constants.primaryColor,),
+          ),
+        ),
+        body: FutureBuilder<Products>(
+          future: ProductsApi().getSingleProduct(widget.id['id'].toString()),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Center(
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: NetworkImage(snapshot.data!.image!),
-                                  fit: BoxFit.scaleDown,
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Container(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(snapshot.data!.image!),
+                                    fit: BoxFit.scaleDown,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          height: 350,
-                          width: 380,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                                color: Constants.primaryColor, width: 4),
-                            borderRadius: BorderRadius.circular(30),
+                            height: 350,
+                            width: 380,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 6,
+                                color: Constants.primaryColor,
+                              ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                            ),
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 25.0, left: 25),
-                        child: Text('Modern Chair',
+                        child: Text(snapshot.data!.title.toString(),
                             style: TextStyle(
                                 fontSize: 22, fontWeight: FontWeight.w500)),
                       ),
@@ -94,7 +107,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 width: 100,
                                 height: 40,
                                 decoration: BoxDecoration(
-                                  color: Colors.transparent,
+                                  color: Constants.thirdColor,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Row(
@@ -106,13 +119,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         width: 25,
                                         height: 25,
                                         decoration: BoxDecoration(
-                                          color: Colors.transparent,
+                                          color: Constants.primaryColor,
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                         child: Center(
                                             child: Icon(
                                               Icons.add,
-                                              color: Color(0xffff7b00),
+                                              color: Colors.white,
                                             )),
                                       ),
                                       onTap: () {
@@ -132,7 +145,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                       width: 25,
                                       height: 25,
                                       decoration: BoxDecoration(
-                                        color: Colors.transparent,
+                                        color: Constants.primaryColor,
                                         borderRadius: BorderRadius.circular(3),
                                       ),
                                       child: Column(
@@ -142,7 +155,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           GestureDetector(
                                             child: Icon(
                                               Icons.remove,
-                                              color: Color(0xffff7b00),
+                                              color: Colors.white,
                                             ),
                                             onTap: () {
                                               setState(() {
@@ -157,7 +170,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 ),
                               ),
                               Text(
-                                '${counter * snapshot.data!.price!} \$',
+                                '${counter * snapshot.data!.price!.round()} \$',
                                 style: TextStyle(
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
@@ -193,8 +206,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 60),
                         child: GestureDetector(
-                          onTap: () {
-                            helper!.add_info(Products(id: widget.id));
+                          onTap: () async {
+                            /*await helper!.add_info(Helper_Product_Details(
+                              product_id: widget.id['id'],
+                              title: snapshot.data!.title.toString(),
+                              image: snapshot.data!.image.toString(),
+                              price: snapshot.data!.price!,
+                              rate: snapshot.data!.rating!.rate!,
+                            ));*/
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NavigationScreen()));
+                            print(await helper!.allproducts());
                           },
                           child: Container(
                             child: Center(
@@ -205,10 +229,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 )),
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
+                            width: MediaQuery.of(context).size.width,
                             height: 50,
                             decoration: BoxDecoration(
                               color: Color(0xffff7b00),
@@ -218,22 +239,20 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                       )
                     ]),
-              ),
-            );
-          }
-          if (snapshot.hasError) {
-            print(snapshot.error!);
+              );
+            }
+            if (snapshot.hasError) {
+              print(snapshot.error!);
+              return Center(
+                child: Text('${snapshot.error}'),
+              );
+            }
             return Center(
-              child: Text('${snapshot.error}'),
+              child: CircularProgressIndicator(),
             );
-          }
-          return Center(
-            child: CircularProgressIndicator(color: Constants.primaryColor,),
-          );
-        },
+          },
+        ),
       ),
-    ),);
+    );
   }
 }
-/*
-*/
