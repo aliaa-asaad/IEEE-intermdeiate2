@@ -112,7 +112,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: [
                                     GestureDetector(
                                       child: Container(
@@ -124,9 +124,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         ),
                                         child: Center(
                                             child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        )),
+                                              Icons.add,
+                                              color: Colors.white,
+                                            )),
                                       ),
                                       onTap: () {
                                         setState(() {
@@ -150,7 +150,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                       ),
                                       child: Column(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           GestureDetector(
                                             child: Icon(
@@ -207,13 +207,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 60),
                         child: GestureDetector(
                           onTap: () async {
-                            await helper!.add_info(Helper_Product_Details(
+                            /*await helper!.add_info(Helper_Product_Details(
                               product_id: widget.id['id'],
                               title: snapshot.data!.title.toString(),
                               image: snapshot.data!.image.toString(),
                               price: snapshot.data!.price!,
                               rate: snapshot.data!.rating!.rate!,
-                            ));
+                            ));*/
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -223,12 +223,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           child: Container(
                             child: Center(
                                 child: Text(
-                              'Add To Cart',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            )),
+                                  'Add To Cart',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                )),
                             width: MediaQuery.of(context).size.width,
                             height: 50,
                             decoration: BoxDecoration(
@@ -256,5 +256,3 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 }
-/*
-*/

@@ -1,12 +1,10 @@
-import 'package:Thermo_App/screens/naviagtion/navigation_bar.dart';
-
-import '/../screens/home/home_screen.dart';
+import '/../screens/naviagtion/navigation_bar.dart';
 import 'package:flutter/material.dart';
 import '/../screens/details/details_screen.dart';
 import '/../screens/splash/splash_screen.dart';
 import '/../DataBase/db_helper.dart';
 
-void main() {
+void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   DbHelper.instance.opendatabase();
   runApp(const MyApp());

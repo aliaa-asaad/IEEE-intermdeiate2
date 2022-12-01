@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'sign_in.dart';
 import 'widgets/auth_button.dart';
 import 'widgets/auth_text_field.dart';
@@ -6,8 +7,8 @@ import 'widgets/caption_text.dart';
 import 'widgets/route_text.dart';
 import 'widgets/title_text.dart';
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
-
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: SafeArea(
@@ -34,6 +35,7 @@ class SignUpScreen extends StatelessWidget {
                 icon: Icons.person,
                 text: 'User Name',
                 input: TextInputType.name,
+                controller: null,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.03,
@@ -42,6 +44,7 @@ class SignUpScreen extends StatelessWidget {
                 icon: Icons.email_outlined,
                 text: 'Email',
                 input: TextInputType.emailAddress,
+                controller: emailController,
 
               ),
               SizedBox(
@@ -52,6 +55,7 @@ class SignUpScreen extends StatelessWidget {
                 text: 'Password',
                 input: TextInputType.visiblePassword,
                 passBool: true,
+                controller: passController,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.20,
@@ -66,7 +70,10 @@ class SignUpScreen extends StatelessWidget {
                   Text('Have an account? '),
                   RouteText(
                       text: 'Sign Ip',
-                      funtion: () {
+                      funtion: () async {
+                        SharedPreferences _prefs=await SharedPreferences.getInstance();
+                        _prefs.setString('email',emailController.text);
+                        _prefs.setString('pass',passController.text);
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => SignInScreen()));
                       })

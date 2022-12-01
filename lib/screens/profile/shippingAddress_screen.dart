@@ -45,149 +45,150 @@ class ShippingScreen extends StatelessWidget {
             }
             if (snapShot.hasData) {
               print(snapShot.data);
-
-              return Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Text(
-                        'First Name',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Text(
-                      snapShot.data!.users![0].name!.firstname.toString(),
-                      style: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Constants.secondryColor,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Text(
-                        'Last Name',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Text(
-                      snapShot.data!.users![0].name!.lastname.toString(),
-                      style: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Constants.secondryColor,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Text(
-                        'Email',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Text(
-                      snapShot.data!.users![0].email.toString(),
-                      style: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Constants.secondryColor,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Text(
-                        'Phone Number',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Text(
-                      snapShot.data!.users![0].phone.toString(),
-                      style: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Constants.secondryColor,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Text(
-                        'Address Line',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Text(
-                      snapShot.data!.users![0].address!.number.toString() +
-                          ',' +
-                          snapShot.data!.users![0].address!.street.toString() +
-                          ',' +
-                          snapShot.data!.users![0].address!.city.toString(),
-                      style: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Constants.secondryColor,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        height: 60,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Constants.primaryColor,
-                              textStyle: const TextStyle(fontSize: 25)),
-                          onPressed: () {},
-                          child: Text('Save'),
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Text(
+                          'First Name',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
-                    ),
-                  ],
+                      Text(
+                        snapShot.data!.users![0].name!.firstname.toString(),
+                        style: TextStyle(
+                            color: Colors.black26,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Divider(
+                        thickness: 1,
+                      //  color: Constants.secondryColor,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Text(
+                          'Last Name',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      Text(
+                        snapShot.data!.users![0].name!.lastname.toString(),
+                        style: TextStyle(
+                            color: Colors.black26,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Divider(
+                        thickness: 1,
+                       // color: Constants.secondryColor,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Text(
+                          'Email',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      Text(
+                        snapShot.data!.users![0].email.toString(),
+                        style: TextStyle(
+                            color: Colors.black26,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Divider(
+                        thickness: 1,
+                       // color: Constants.secondryColor,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Text(
+                          'Phone Number',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      Text(
+                        snapShot.data!.users![0].phone.toString(),
+                        style: TextStyle(
+                            color: Colors.black26,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Divider(
+                        thickness: 1,
+                        //color: Constants.secondryColor,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Text(
+                          'Address Line',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      Text(
+                        snapShot.data!.users![0].address!.number.toString() +
+                            ',' +
+                            snapShot.data!.users![0].address!.street.toString() +
+                            ',' +
+                            snapShot.data!.users![0].address!.city.toString(),
+                        style: TextStyle(
+                            color: Colors.black26,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Divider(
+                        thickness: 1,
+                        //color: Constants.secondryColor,
+                      ),
+                      SizedBox(height: 150,),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 60,
+                          width: 350,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Constants.primaryColor,
+                                textStyle: const TextStyle(fontSize: 25)),
+                            onPressed: () {},
+                            child: Text('Save'),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }
-            return Container(
-              alignment: Alignment.center,
+            return Center(child: Container(
               child: CircularProgressIndicator(
-                color: Constants.secondryColor,
+                color: Constants.primaryColor,
               ),
-            );
+            ),);
           }),
     );
   }

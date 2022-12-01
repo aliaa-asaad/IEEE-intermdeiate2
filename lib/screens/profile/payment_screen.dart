@@ -40,7 +40,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
             }
             if (snapShot.hasData) {
               print(snapShot.data);
-            }
 
             return Padding(
               padding: const EdgeInsets.all(25.0),
@@ -192,7 +191,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ],
               ),
-            );
+            ); }
+            return Center(child: Container(
+              child: CircularProgressIndicator(
+                color: Constants.primaryColor,
+              ),
+            ),);
           }),
     );
   }
